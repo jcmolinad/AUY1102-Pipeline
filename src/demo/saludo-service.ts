@@ -3,10 +3,10 @@ import express from 'express';
 const app = express();
  
 // Endpoint de demostración: devuelve un saludo personalizado.
-// VULNERABLE: inserta lo que escribe el usuario directamente en el HTML.
+// CORREGIDO: responde JSON, por lo que el navegador no interpreta HTML.
 app.get('/saludo', (req, res) => {
-  const nombre = req.query.nombre as string;
-  res.send(`<h1>Hola ${nombre}</h1>`);
+  const nombre = String(req.query.nombre ?? '');
+  res.json({ saludo: `Hola ${nombre}` });
 });
  
 app.listen(3000);
