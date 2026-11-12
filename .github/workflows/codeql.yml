@@ -10,7 +10,7 @@ on:
 
  
 jobs:
-   lint:
+  lint:
     name: Lint (ESLint)
     runs-on: ubuntu-latest
     steps:
